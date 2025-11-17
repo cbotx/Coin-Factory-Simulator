@@ -1,0 +1,170 @@
+[00:00] Buy (Exit at d5), Buy (Factory at d4) Money: 0
+
+[00:09] Buy (Factory at c4) Money: 0
+
+[00:18] Buy (PortalB at e5), Buy (Factory at d2), Buy (PortalA at e2) Money: 0
+
+[00:27] Upgrade (Factory at d4) Money: 0
+[00:40] Buy (Coffee at c3) Money: 1
+[00:45] Upgrade (Factory at d2) Money: 6
+[00:48] Upgrade (Factory at c4) Money: 3
+[00:52] Buy (Factory at b4) Money: 5
+
+[01:03] Buy (Central at d3), Buy (PortalA at e3) Money: 0
+
+[01:06] Upgrade (Factory at b4) Money: 12
+[01:10] Upgrade (Factory at d4) Money: 10
+[01:15] Buy (Coffee at c2) Money: 12
+[01:18] Buy (Factory at b2) Money: 13
+[01:19] Upgrade (Factory at b2) Money: 12
+[01:22] Upgrade (Factory at d2) Money: 9
+[01:31] Buy (Central at b3) Money: 21
+[01:33] Upgrade (Factory at b4) Money: 6
+[01:36] Upgrade (Factory at b2) Money: 21
+[01:48] Upgrade (Coffee at c3) Money: 12
+[01:58] Upgrade (Coffee at c3) Money: 12
+[02:08] Upgrade (Coffee at c3) Money: 122
+[02:13] Upgrade (Factory at d4) Money: 67
+[02:19] Upgrade (Coffee at c3) Money: 81
+[02:23] Upgrade (Factory at d2) Money: 59
+[02:29] Upgrade (Coffee at c3) Money: 231
+[02:32] Upgrade (Central at d3) Money: 4
+[02:33] Buy (Factory at c2) Money: 8
+[02:34] Upgrade 2 (Factory at c2) Money: 40
+[02:35] Buy (Coffee at e4) Money: 80
+
+[02:39] Upgrade (Coffee at c3), Rotate (Belt at c1 facing Left) Money: 183
+
+[02:40] Buy (Park at d1) Money: 41
+[02:41] Upgrade (Factory at c4) Money: 127
+[02:43] Upgrade (Factory at c2) Money: 77
+[02:46] Upgrade (Central at b3) Money: 42
+[02:49] Upgrade (Coffee at c3) Money: 142
+[03:01] Buy (Accelerator at b2) Money: 293.2
+[03:02] Upgrade (Coffee at c3) Money: 78.2
+[03:04] Upgrade (Factory at c4) Money: 250.2
+[03:09] Upgrade (Factory at c2) Money: 297.8
+[03:10] Upgrade (Factory at b4) Money: 208.8
+
+[03:12] Upgrade (Coffee at c3), Buy (Jumper at e3) Money: 179.5
+
+[03:13] Buy (PortalB at c5), Rotate (Belt at a4 facing Down), Rotate (Factory at b4 facing Left), Buy (PortalA at a3), Buy (Jumper at c1) Money: 132.4
+
+[03:18] Buy (Bishop at b1) Money: 238.3
+[03:22] Upgrade (Coffee at c3) Money: 1.92k
+[03:28] Upgrade (Central at d3) Money: 614.9
+[03:31] Upgrade (Coffee at c3) Money: 590.4
+[03:35] Buy (Bishop at c4) Money: 358
+[03:38] Upgrade (Coffee at c3) Money: 1.58k
+[03:41] Upgrade (Central at b3) Money: 281.71
+[03:42] Buy (Park at d2) Money: 1.01k
+[03:43] Upgrade (Factory at d4) Money: 831.66
+[03:44] Upgrade (Factory at b4) Money: 1k
+[03:45] Upgrade (Coffee at c3) Money: 821.49
+[03:51] Buy (Water at e1) Money: 637.06
+[03:52] Upgrade (Coffee at c3) Money: 736.86
+[03:59] Upgrade (Coffee at c3) Money: 18.51k
+[04:00] Upgrade (Factory at c2) Money: 1.69k
+[04:01] Rotate (Factory at b4 facing Up) Money: 4.89k
+[04:02] Buy (Bishop at a4) Money: 132.98
+[04:06] Upgrade (Coffee at c3) Money: 21.23k
+[04:12] Upgrade (Central at b3) Money: 3.44k
+[04:13] Upgrade (Coffee at c3) Money: 8.7k
+[04:15] Buy (Water at e2) Money: 3.06k
+[04:20] Upgrade (Coffee at c3) Money: 67.31k
+[04:21] Upgrade (Accelerator at b2) Money: 2.51k
+[04:25] Upgrade (Central at d3) Money: 5.18k
+[04:26] Buy (Bishop at e4) Money: 5.28k
+[04:27] Upgrade (Coffee at c3) Money: 19.56k
+[04:28] Upgrade (Coffee at c3) Money: 15.89k
+[04:33] Upgrade (Coffee at c3) Money: 118.12k
+[04:36] Upgrade (Accelerator at b2) Money: 132.71
+
+[04:38] Buy (Jumper at b5), Upgrade (Coffee at c3), Buy (Jumper at a1) Money: 36.51k
+
+[04:40] Rotate (Central at d3 facing Up), Buy (Firecamp at a2) Money: 21.37k
+
+[04:41] Buy (Water at e3) Money: 6.63k
+[04:43] Upgrade (Coffee at c3) Money: 68.24k
+[04:46] Upgrade (Firecamp at a2) Money: 33.12k
+[04:48] Upgrade (Coffee at c3) Money: 95.46k
+
+[04:49] Buy (Water at c1), Upgrade (Water at c1) Money: 17.42k
+
+[04:52] Buy (Overclocker at a1) Money: 10.76k
+[04:53] Upgrade (Coffee at c3) Money: 44.64k
+[04:58] Upgrade (Coffee at c3) Money: 316.91k
+[05:00] Upgrade (Factory at c2) Money: 44.26k
+
+[05:03] Buy (PortalA at b4), Buy (Overclocker at a3), Rotate (Central at b3 facing Up), Upgrade (Coffee at c3) Money: 14.87k
+
+[05:04] Upgrade (Water at e3), Upgrade (Water at e2), Upgrade (Water at e1) Money: 98.34k
+
+[05:08] Upgrade (Coffee at c3) Money: 758.87k
+[05:13] Upgrade (Coffee at c3) Money: 1.73m
+[05:15] Upgrade (Firecamp at a2) Money: 168.42k
+[05:18] Upgrade (Coffee at c3) Money: 877.41k
+
+[05:22] Buy (PortalB at a5), Buy (Overclocker at b4), Rotate (Central at b3 facing Right), Buy (PortalA at c3), Rotate (Central at d3 facing Left) Money: 1.37m
+
+[05:24] Buy (Basketball at c5) Money: 24.46k
+[05:28] Buy (Overclocker at d4) Money: 286.62k
+[05:31] Upgrade (Park at d2) Money: 328.71k
+[05:35] Upgrade (Park at d1) Money: 2.1m
+[05:36] Upgrade (Bishop at b1) Money: 517k
+[05:40] Upgrade (Bishop at c4) Money: 4.43m
+[05:41] Upgrade (Central at b3) Money: 154.3k
+[05:43] Upgrade (Firecamp at a2) Money: 2.19m
+
+[05:45] Upgrade (Central at d3), Upgrade (Park at d2) Money: 3.74m
+
+[05:46] Upgrade (Overclocker at b4) Money: 1.18m
+[05:47] Upgrade (Bishop at e4) Money: 2.48m
+[05:48] Upgrade (Park at d1) Money: 485.67k
+[05:49] Upgrade (Bishop at a4) Money: 6.59m
+
+[05:50] Buy (Missile at e5), Upgrade (Overclocker at d4), Upgrade (Overclocker at a1) Money: 44.06m
+
+[05:51] Upgrade (Firecamp at a2) Money: 5.62m
+
+[05:52] Upgrade (Overclocker at a3), Buy (Bishop at e2), Upgrade (Bishop at e2) Money: 3.91m
+
+[05:53] Upgrade (Jumper at b5), Buy (Basketball at d5), Buy (Exit at e5), Buy (Water at e2), Upgrade (Water at e2) Money: 16.38m
+
+[05:56] Upgrade (Factory at c2) Money: 140.04m
+
+[05:57] Buy (Drum at a4), Upgrade (Drum at a4), Buy (Bishop at b3), Upgrade (Bishop at b3), Buy (Bishop at e2), Upgrade (Bishop at e2) Money: 156.25m
+
+[05:58] Buy (Firecamp at b3), Upgrade 3 (Firecamp at b3), Buy (Water at e2), Upgrade (Water at e2) Money: 113.39m
+
+[06:00] Buy (Drum at c4), Upgrade (Drum at c4), Buy (Drum at e4), Upgrade (Drum at e4), Upgrade (Firecamp at b3), Buy (Overclocker at c3), Upgrade (Overclocker at c3), Buy (Firecamp at d3), Upgrade 3 (Firecamp at d3), Buy (Overclocker at e3), Upgrade (Overclocker at e3), Upgrade (Firecamp at a2), Buy (Accelerator at d2), Upgrade 2 (Accelerator at d2), Buy (Firecamp at e2), Upgrade 3 (Firecamp at e2), Buy (Firecamp at b1), Upgrade 4 (Firecamp at b1), Buy (Overclocker at c1), Upgrade (Overclocker at c1), Buy (Firecamp at d1), Upgrade 3 (Firecamp at d1), Buy (Overclocker at e1), Upgrade (Overclocker at e1) Money: 250.37m
+
+[06:01] Upgrade (Firecamp at d3), Upgrade (Firecamp at e2), Upgrade (Firecamp at d1) Money: 1.76b
+
+[06:09] Buy (Drum at e3), Upgrade (Drum at e3), Buy (Overclocker at e2), Upgrade (Overclocker at e2), Buy (Water at c1), Upgrade (Water at c1), Buy (Overclocker at d1), Upgrade (Overclocker at d1), Buy (Drum at e1), Upgrade (Drum at e1) Money: 2.08b
+
+[06:10] Buy (Bishop at a5), Upgrade (Bishop at a5), Buy (Overclocker at a4), Upgrade (Overclocker at a4), Buy (Central at b4), Upgrade 5 (Central at b4), Buy (Overclocker at c4), Upgrade (Overclocker at c4), Buy (Drum at a3), Upgrade (Drum at a3), Buy (Overclocker at b3), Upgrade (Overclocker at b3), Buy (Drum at c3), Upgrade (Drum at c3), Buy (Overclocker at d3), Upgrade (Overclocker at d3), Buy (Overclocker at a2), Upgrade (Overclocker at a2), Buy (Drum at a1), Upgrade (Drum at a1), Buy (Overclocker at b1), Upgrade (Overclocker at b1) Money: 343.56m
+
+[06:15] Buy (Water at d4), Upgrade (Water at d4), Buy (Water at e4), Upgrade (Water at e4), Buy (Bishop at d3), Upgrade (Bishop at d3), Buy (Water at e3), Upgrade (Water at e3), Buy (Park at d2), Upgrade 2 (Park at d2), Buy (Water at e2), Upgrade (Water at e2), Buy (Bishop at d1), Upgrade (Bishop at d1), Buy (Water at e1), Upgrade (Water at e1) Money: 410.41m
+
+[06:18] Upgrade (Factory at c2) Money: 9.09b
+
+[06:20] Buy (Bishop at a3), Upgrade (Bishop at a3), Rotate (Overclocker at b3 facing Up), Buy (Park at c3), Upgrade 2 (Park at c3), Buy (Water at a2), Upgrade (Water at a2), Buy (Water at a1), Upgrade (Water at a1), Buy (Park at b1), Upgrade 2 (Park at b1) Money: 13.63b
+
+[06:26] Buy (Drum at a5), Upgrade (Drum at a5), Buy (Investor at b4), Upgrade 3 (Investor at b4), Buy (Drum at a3), Upgrade (Drum at a3), Buy (Drum at c3), Upgrade (Drum at c3), Buy (Overclocker at d3), Upgrade (Overclocker at d3), Buy (Drum at e3), Upgrade (Drum at e3), Buy (Overclocker at a2), Upgrade (Overclocker at a2), Buy (Investor at d2), Upgrade 2 (Investor at d2), Buy (Overclocker at e2), Upgrade (Overclocker at e2), Buy (Drum at a1), Upgrade (Drum at a1), Buy (Overclocker at b1), Upgrade (Overclocker at b1), Buy (Drum at c1), Upgrade (Drum at c1), Buy (Overclocker at d1), Upgrade (Overclocker at d1), Buy (Drum at e1), Upgrade (Drum at e1) Money: 107.36b
+
+[06:27] Buy (Overclocker at b5), Upgrade (Overclocker at b5), Buy (Drum at c5), Upgrade (Drum at c5), Upgrade (Investor at d2) Money: 39.85b
+
+[06:28] Buy (Investor at b2), Upgrade 3 (Investor at b2) Money: 187.44b
+
+[06:30] Buy (Overclocker at d4), Upgrade (Overclocker at d4), Buy (Overclocker at a3), Upgrade (Overclocker at a3), Buy (Overclocker at c3), Upgrade (Overclocker at c3) Money: 186.87b
+
+[06:31] Buy (Overclocker at a5), Upgrade (Overclocker at a5), Buy (Overclocker at c5), Upgrade (Overclocker at c5) Money: 185b
+
+[06:32] Buy (Missile at d5) Money: 185b
+
+[06:34] Buy (Central at a4), Upgrade 5 (Central at a4), Buy (Central at c4), Upgrade 5 (Central at c4), Buy (Water at c1), Upgrade (Water at c1) Money: 181.78b
+
+[06:35] Buy (Bishop at b5), Upgrade (Bishop at b5), Buy (Bishop at d5), Upgrade (Bishop at d5), Buy (Exit at e4), Buy (Water at a3), Upgrade (Water at a3), Buy (Bishop at b3), Upgrade (Bishop at b3), Buy (Park at c3), Upgrade 2 (Park at c3), Buy (Bishop at d3), Upgrade (Bishop at d3), Buy (Water at e3), Upgrade (Water at e3), Buy (Water at a2), Upgrade (Water at a2), Buy (Park at b2), Upgrade 2 (Park at b2), Buy (Park at d2), Upgrade 2 (Park at d2), Buy (Water at e2), Upgrade (Water at e2), Buy (Water at a1), Upgrade (Water at a1), Buy (Bishop at b1), Upgrade (Bishop at b1), Buy (Park at d1), Upgrade 2 (Park at d1), Buy (Water at e1), Upgrade (Water at e1) Money: 181.72b
+
+[06:36] Buy (Jumper at b4), Upgrade (Jumper at b4), Buy (Basketball at c4), Buy (Basketball at d4) Money: 181.71b
