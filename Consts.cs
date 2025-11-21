@@ -13,7 +13,6 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Factory,
-                Notation = "Fac",
                 Color = ColorTranslator.FromHtml("#DAC667"),
                 SecondaryColor = ColorTranslator.FromHtml("#E47441"),
                 IsDirectional = true,
@@ -25,7 +24,6 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Central,
-                Notation = "Cen",
                 Color = ColorTranslator.FromHtml("#06CADD"),
                 SecondaryColor = ColorTranslator.FromHtml("#077783"),
                 IsDirectional = true,
@@ -35,7 +33,6 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Belt,
-                Notation = "Blt",
                 Color = ColorTranslator.FromHtml("#151515"),
                 IsDirectional = true,
                 Prices = [0],
@@ -43,7 +40,6 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Jumper,
-                Notation = "Jmp",
                 Color = ColorTranslator.FromHtml("#CCD4E1"),
                 IsDirectional = true,
                 Prices = [200, 15000],
@@ -51,9 +47,9 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Coffee,
-                Notation = "Cof",
                 Color = ColorTranslator.FromHtml("#583929"),
                 SecondaryColor = ColorTranslator.FromHtml("#8E766B"),
+                IsCyclic = true,
                 Prices = [50, 500, 2000, 20000],
                 Base = [1, 2, 5, 10],
                 Cycle = [0, 10, 7, 5]
@@ -61,7 +57,6 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Park,
-                Notation = "Prk",
                 Color = ColorTranslator.FromHtml("#29963B"),
                 Prices = [300, 2500000, 7500000],
                 Mul = [0.3, 0.5, 0.75]
@@ -69,7 +64,6 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Water,
-                Notation = "Wat",
                 Color = ColorTranslator.FromHtml("#1386B5"),
                 Prices = [12000, 24000],
                 Mul = [1.25, 1.3]
@@ -77,7 +71,6 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Bishop,
-                Notation = "Bis",
                 Color = ColorTranslator.FromHtml("#416182"),
                 SecondaryColor = ColorTranslator.FromHtml("#0D2E4F"),
                 Prices = [2000, 4000000],
@@ -86,7 +79,6 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Accelerator,
-                Notation = "Acc",
                 Color = ColorTranslator.FromHtml("#D86E3D"),
                 SecondaryColor = ColorTranslator.FromHtml("#894527"),
                 IsDirectional = true,
@@ -98,7 +90,6 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Firecamp,
-                Notation = "Fir",
                 Color = ColorTranslator.FromHtml("#CF4A4A"),
                 SecondaryColor = ColorTranslator.FromHtml("#FEC82F"),
                 IsDirectional = true,
@@ -110,7 +101,6 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Drum,
-                Notation = "Drm",
                 Color = ColorTranslator.FromHtml("#936746"),
                 SecondaryColor = ColorTranslator.FromHtml("#BF9B7A"),
                 IsCyclic = true,
@@ -121,7 +111,6 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Overclocker,
-                Notation = "Over",
                 Color = ColorTranslator.FromHtml("#7E61CF"),
                 SecondaryColor = ColorTranslator.FromHtml("#271D40"),
                 IsDirectional = true,
@@ -133,14 +122,12 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Basketball,
-                Notation = "Bask",
                 Color = ColorTranslator.FromHtml("#E08132"),
                 Prices = [1800000],
             },
             new()
             {
                 BlockType = Block.Investor,
-                Notation = "Inv",
                 Color = ColorTranslator.FromHtml("#676798"),
                 SecondaryColor = ColorTranslator.FromHtml("#363650"),
                 IsCyclic = true,
@@ -151,7 +138,6 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Missile,
-                Notation = "Mis",
                 Color = ColorTranslator.FromHtml("#C82D2D"),
                 SecondaryColor = ColorTranslator.FromHtml("#E6E6E6"),
                 IsDirectional = true,
@@ -161,8 +147,37 @@ namespace CoinFactorySim
             },
             new()
             {
+                BlockType = Block.Distributor,
+                Color = ColorTranslator.FromHtml("#4F9195"),
+                SecondaryColor = ColorTranslator.FromHtml("#325B5E"),
+                IsDirectional = true,
+                IsCyclic = true,
+                Prices = [20000, 500000, 10000000, 200000000],
+                Base = [1, 1, 1, 2],
+                Cycle = [5, 3, 2, 2],
+            },
+            new()
+            {
+                BlockType = Block.Drill,
+                Color = ColorTranslator.FromHtml("#4F2A56"),
+                SecondaryColor = ColorTranslator.FromHtml("#D01C43"),
+                IsDirectional = true,
+                IsCyclic = true,
+                Prices = [10000, 35000, 670000, 4500000],
+                Cycle = [60, 60, 60, 60],
+                Base = [-0.5, 0, 0.5, 1],
+            },
+            new()
+            {
+                BlockType = Block.Shield,
+                Color = ColorTranslator.FromHtml("#EAEAEA"),
+                SecondaryColor = ColorTranslator.FromHtml("#5F5FCC"),
+                IsDirectional = true,
+                Prices = [20000],
+            },
+            new()
+            {
                 BlockType = Block.PortalA,
-                Notation = "PortA",
                 Color = ColorTranslator.FromHtml("#1B212D"),
                 SecondaryColor = ColorTranslator.FromHtml("#00A2FF"),
                 IsDirectional = true,
@@ -172,9 +187,8 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.PortalB,
-                Notation = "PortB",
                 Color = ColorTranslator.FromHtml("#1E2432"),
-                SecondaryColor = ColorTranslator.FromHtml("#FF9a00"),
+                SecondaryColor = ColorTranslator.FromHtml("#FF9A00"),
                 IsDirectional = true,
                 IsFirstFree = true,
                 Prices = [1000],
@@ -182,14 +196,12 @@ namespace CoinFactorySim
             new()
             {
                 BlockType = Block.Exit,
-                Notation = "Ex",
                 Color = Color.Black,
                 Prices = [0],
             },
             new()
             {
                 BlockType = Block.None,
-                Notation = "_",
                 Color = Color.White,
             },
         ];

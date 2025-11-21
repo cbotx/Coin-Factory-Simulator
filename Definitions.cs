@@ -29,6 +29,9 @@ namespace CoinFactorySim
         Missile,
         PortalA,
         PortalB,
+        Distributor,
+        Drill,
+        Shield,
     }
     public enum Direction
     {
@@ -50,7 +53,6 @@ namespace CoinFactorySim
         public double[]? Base { get; set; }
         public double[]? Mul { get; set; }
         public int[]? Cycle { get; set; }
-        public string Notation { get; set; }
     }
 
     public class BlockState

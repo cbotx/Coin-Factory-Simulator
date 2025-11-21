@@ -1,4 +1,7 @@
-﻿namespace CoinFactorySim {
+﻿using System.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace CoinFactorySim {
     public class Simulator(MapDefinition map, Dictionary<Block, BlockDefinition> blockDefinitions) {
         private readonly MapDefinition map = map;
         private readonly Dictionary<Block, BlockDefinition> blockDefinitions = blockDefinitions;
@@ -163,7 +166,7 @@
 
                     block.Value = GetBlockBase(block) + block.Bonus;
                 }
-                // 7. If next frame is keyframe: backup
+                // 5. If next frame is keyframe: backup
                 if (idx == frameEnd - 1) {
                     tempFrameState = new(map.Size); // final state
                 } else if (frameStates[idx + 1].IsKeyFrame) {
@@ -173,11 +176,47 @@
                 }
                 tempFrameState.BlockStates = fs.BlockStates.ConvertAll(item => item.ShallowCopy());
                 tempFrameState.Money = fs.Money;
-                // 9. Do other cycles
+                // 6. Do distributor cycle
+                DoDistributorCycle(tempFrameState);
+                // 7. Do other cycles
                 DoCycle(tempFrameState);
                 
                 for (int i = 0; i < fs.BlockStates.Count; i++) {
                     fs.BlockStates[i].Value = tempFrameState.BlockStates[i].Value;
+                }
+            }
+        }
+        private void DoDistributorCycle(FrameState fs) {
+            for (int i = 0; i < fs.BlockStates.Count; i++) {
+                var block = fs.BlockStates[i];
+                int cycles = GetEffectCycle(i) + fs.BlockStates[i].Cycle;
+                int jumper = GetEffectJumper(i);
+                if (block.BlockType == Block.Distributor) {
+                    var fireCount = cycles / GetBlockCycle(block);
+                    if (fireCount > 0) {
+                        int facingTile = GetFacingTile(i, block.Direction);
+                        int facingTileWithJumper = GetFacingTile(i, block.Direction, jumper);
+                        var affectedTiles = GetOrthogonals(i);
+                        var targetTile = -1;
+                        List<Block> allowList = [Block.Factory, Block.Central, Block.Firecamp, Block.Accelerator, Block.Coffee, Block.Investor];
+                        if (facingTile >= 0 && allowList.Contains(fs.BlockStates[facingTile].BlockType)) {
+                            targetTile = facingTile;
+                        } else if (facingTileWithJumper >= 0 && allowList.Contains(fs.BlockStates[facingTileWithJumper].BlockType)) {
+                            targetTile = facingTileWithJumper;
+                        }
+                        if (targetTile >= 0) {
+                            int stolenCycles = 0;
+                            foreach (var j in affectedTiles) {
+                                if (j == targetTile) continue;
+                                if (blockDefinitions[fs.BlockStates[j].BlockType].IsCyclic && fs.BlockStates[j].BlockType != Block.Distributor) {
+                                    fs.BlockStates[j].Cycle -= (int)GetBlockBase(block) * fireCount;
+                                    stolenCycles += (int)GetBlockBase(block) * fireCount;
+                                }
+                            }
+                            fs.BlockStates[targetTile].Cycle += stolenCycles;
+                        }
+                    }
+                    fs.BlockStates[i].Cycle = cycles % GetBlockCycle(block);
                 }
             }
         }
@@ -186,6 +225,7 @@
             for (int i = 0; i < fs.BlockStates.Count; i++) {
                 var block = fs.BlockStates[i];
                 int cycles = GetEffectCycle(i) + fs.BlockStates[i].Cycle;
+                if (cycles < 0) cycles = 0;
                 int jumper = GetEffectJumper(i);
                 if (block.BlockType == Block.None) {
                     List<Block> allowList = [Block.None, Block.Belt, Block.Jumper, Block.PortalA, Block.PortalB];
@@ -231,7 +271,12 @@
                         if (portalTile >= 0) {
                             facingTile = portalTile;
                         }
-                        tempMoneyArray[facingTile] += block.Money * GetBasketballMul(fs, i, facingTile);
+                        List<Block> allowList = [Block.Belt, Block.Jumper, Block.PortalA, Block.PortalB, Block.Exit, Block.None];
+                        if (allowList.Contains(fs.BlockStates[facingTile].BlockType)) {
+                            tempMoneyArray[facingTile] += block.Money * GetBasketballMul(fs, i, facingTile);
+                        } else {
+                            tempMoneyArray[i] += block.Money;
+                        }
                     }
                 } else if (block.BlockType == Block.Exit) {
                     fs.Money += block.Money;
@@ -302,7 +347,7 @@
                 } else if (block.BlockType == Block.Overclocker) {
                     int facingTile = GetFacingTile(i, block.Direction);
                     int facingTileWithJumper = GetFacingTile(i, block.Direction, jumper);
-                    List<Block> allowList = [Block.Factory, Block.Central, Block.Firecamp, Block.Accelerator, Block.Coffee, Block.Investor];
+                    List<Block> allowList = [Block.Factory, Block.Central, Block.Firecamp, Block.Accelerator, Block.Coffee, Block.Investor, Block.Distributor];
                     if (facingTile >= 0 && allowList.Contains(fs.BlockStates[facingTile].BlockType)) {
                         fs.BlockStates[facingTile].Cycle += (int)GetBlockBase(block) * (cycles / GetBlockCycle(block));
                     } else if (facingTileWithJumper >= 0 && allowList.Contains(fs.BlockStates[facingTileWithJumper].BlockType)) {
@@ -312,26 +357,26 @@
                 } else if (block.BlockType == Block.Drum) {
                     var affectedTiles = block.Level == 1 ? GetOrthogonals(i) : GetSurroundings(i);
                     foreach (var j in affectedTiles) {
-                        if (new List<Block> { Block.Factory, Block.Central, Block.Firecamp, Block.Accelerator, Block.Coffee, Block.Investor }.Contains(fs.BlockStates[j].BlockType)) {
+                        if (new List<Block> { Block.Factory, Block.Central, Block.Firecamp, Block.Accelerator, Block.Coffee, Block.Investor, Block.Distributor }.Contains(fs.BlockStates[j].BlockType)) {
                             fs.BlockStates[j].Cycle += (int)GetBlockBase(block) * (cycles / GetBlockCycle(block));
                         }
                     }
                     fs.BlockStates[i].Cycle = cycles % GetBlockCycle(block);
                 } else if (block.BlockType == Block.Missile) {
-                    var cycleCount = cycles / GetBlockCycle(block);
-                    while (cycleCount > 0) {
+                    var fireCount = cycles / GetBlockCycle(block);
+                    while (fireCount > 0) {
                         var targetTile = GetMissileTarget(fs, i, block.Direction, jumper);
                         if (targetTile >= 0) {
-                            if (fs.BlockStates[targetTile].Level > cycleCount) {
-                                fs.BlockStates[targetTile].Level -= cycleCount;
-                                cycleCount = 0;
+                            if (fs.BlockStates[targetTile].Level > fireCount) {
+                                fs.BlockStates[targetTile].Level -= fireCount;
+                                fireCount = 0;
                             } else {
                                 fs.BlockStates[targetTile].BlockType = Block.None;
                                 fs.BlockStates[targetTile].Value = 0;
                                 fs.BlockStates[targetTile].Bonus = 0;
                                 fs.BlockStates[targetTile].Cycle = 0;
                                 fs.BlockStates[targetTile].Money = 0;
-                                cycleCount -= fs.BlockStates[targetTile].Level;
+                                fireCount -= fs.BlockStates[targetTile].Level;
                             }
                         } else {
                             break;

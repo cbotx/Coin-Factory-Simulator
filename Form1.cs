@@ -3,6 +3,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 
 namespace CoinFactorySim {
     public partial class Form1 : Form {
@@ -57,7 +58,7 @@ namespace CoinFactorySim {
 
         private Simulator simulator;
         private NotationGenerator notationGenerator;
-
+        private HotkeyHandler hotkeyHandler;
         public Form1() {
             InitializeComponent();
             Text = this.ClientSize.Width.ToString();
@@ -81,7 +82,7 @@ namespace CoinFactorySim {
             THICKNESS = (int)(5 * SCALE);
 
             BLOCKS_BY_TYPE = Consts.BLOCKS.ToDictionary(b => b.BlockType);
-            Label_Money.Location = new Point((int)(UI_START_X + (BLOCK_SIZE * map.Width) / 2.0f - 56), UI_START_Y - 50);
+            Label_Money.Location = new Point((int)(UI_START_X + (BLOCK_SIZE * map.Width) / 2.0f - Label_Money.Width / 2.0f), UI_START_Y - 50);
 
             for (int i = 0; i < FRAME_SETS; i++) {
                 for (int j = 0; j < FRAME_COUNT; j++) {
@@ -90,6 +91,8 @@ namespace CoinFactorySim {
             }
             simulator = new(map, BLOCKS_BY_TYPE);
             notationGenerator = new(map, BLOCKS_BY_TYPE);
+            hotkeyHandler = new HotkeyHandler(this, Keys.Tab, 0x0000);
+            hotkeyHandler.HotkeyPressed += HotkeyHandler_HotkeyPressed;
         }
 
         private void Form1_Load(object? sender, EventArgs e) {
@@ -223,6 +226,32 @@ namespace CoinFactorySim {
                     frameStates.Add(new FrameState(map.Size));
                 }
             }
+        }
+        private void HotkeyHandler_HotkeyPressed(object? sender, EventArgs e) {
+            int frameSetStart = currentFrame - (currentFrame % FRAME_COUNT);
+            int frameSetEnd = frameSetStart + FRAME_COUNT;
+            int frameWindowStart = frameSetStart + frameOffset;
+            int frameWindowEnd = frameWindowStart + FRAME_DISPLAY_COUNT;
+            if (currentFrame >= 0 && currentFrame < frameSetEnd - 1) {
+                var targetFrame = currentFrame + 1;
+                while (!frameStates[targetFrame].IsKeyFrame && targetFrame < frameSetEnd - 1) targetFrame++;
+                if (targetFrame <= frameWindowEnd - 1) {
+                    frames[GetFrameLabelIndex(currentFrame)].Invalidate();
+                    frames[GetFrameLabelIndex(targetFrame)].Invalidate();
+                    currentFrame = targetFrame;
+                    Render_Frame();
+                } else {
+                    currentFrame = targetFrame;
+                    frameOffset = currentFrame - frameSetStart - FRAME_DISPLAY_COUNT + 1;
+                    for (int i = 0; i < FRAME_SETS; i++) InvalidateFrameSet(i);
+                    Invalidate();
+                    Render_Frame();
+                }
+            }
+        }
+        protected override void OnFormClosed(FormClosedEventArgs e) {
+            hotkeyHandler.Dispose();
+            base.OnFormClosed(e);
         }
         private void On_Any_Button_MouseDown(object? sender, EventArgs e) {
             Label label = sender as Label;
@@ -424,7 +453,7 @@ namespace CoinFactorySim {
             } else {
                 BlockState prev = new();
                 if (currentFrame > 0) prev = frameStates[currentFrame - 1].BlockStates[index];
-                if (bs.BlockType == prev.BlockType && (frameActions[currentFrame].Any(item => item.Index == index && item.Action == ActionType.Upgrade) || bs.Direction != prev.Direction)) {
+                if (frameActions[currentFrame].Any(item => item.Index == index)) {
                     using Pen pen = new(Color.Lime, 3f);
                     pen.Alignment = PenAlignment.Inset;
                     var rect = label.ClientRectangle;
@@ -510,8 +539,8 @@ namespace CoinFactorySim {
             if (currentTile != index) {
                 var oldTile = currentTile;
                 currentTile = index;
-                if (oldTile >= 0) tiles[oldTile].Refresh();
-                tiles[currentTile].Refresh();
+                if (oldTile >= 0) tiles[oldTile].Invalidate();
+                tiles[currentTile].Invalidate();
             }
         }
         private void On_Tile_MouseWheel(object? sender, MouseEventArgs e) {
@@ -545,7 +574,13 @@ namespace CoinFactorySim {
             Update_Frames();
             tiles[currentTile].Invalidate();
         }
-
+        
+        private void Form1_MouseMove(object? sender, EventArgs e) {
+            if (currentTile >= 0) {
+                tiles[currentTile].Invalidate();
+                currentTile = -1;
+            }
+        }
         private void On_KeyDown(object? sender, KeyEventArgs e) {
             int frameSetStart = currentFrame - (currentFrame % FRAME_COUNT);
             int frameSetEnd = frameSetStart + FRAME_COUNT;
@@ -614,7 +649,7 @@ namespace CoinFactorySim {
             
             if (borderColor != null) {
                 float penWidth = (float)(3f * SCALE);
-                if (blockType == Block.PortalA || blockType == Block.PortalB) penWidth = (float)(7f * SCALE); ;
+                if (blockType == Block.PortalA || blockType == Block.PortalB || blockType == Block.Shield) penWidth = (float)(7f * SCALE); ;
                 using Pen pen = new((Color)borderColor, penWidth);
                 var rc = label.ClientRectangle;
                 float diameter = Math.Min(rc.Width, rc.Height) * 0.6f;
@@ -622,10 +657,10 @@ namespace CoinFactorySim {
                 float y = rc.Top + (rc.Height - diameter) / 2f;
                 var rect = new RectangleF(x, y, diameter, diameter);
 
-                if (blockType != Block.Missile) {
-                    g.DrawEllipse(pen, rect);
-                } else {
+                if (blockType == Block.Missile || blockType == Block.Distributor) {
                     g.DrawRectangle(pen, rect);
+                } else {
+                    g.DrawEllipse(pen, rect);
                 }
             }
         }
@@ -648,7 +683,7 @@ namespace CoinFactorySim {
                 }
                 tiles[i].Invalidate();
             }
-            Label_Money.Text = $"Money: {Utils.FormatNumber(state.Money)}";
+            Label_Money.Text = $"{Utils.GetTimeString(currentFrame % FRAME_COUNT)}    Money: {Utils.FormatNumber(state.Money)}";
 
             foreach (var picker in pickers) picker.Invalidate();
             this.Text = Utils.GetTimeString(currentFrame % FRAME_COUNT);

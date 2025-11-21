@@ -34,21 +34,24 @@
             Label_Money.AutoSize = true;
             Label_Money.Font = new Font("Arial", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Label_Money.Location = new Point(0, 0);
+            Label_Money.Margin = new Padding(4, 0, 4, 0);
             Label_Money.Name = "Label_Money";
-            Label_Money.Size = new Size(140, 33);
+            Label_Money.Size = new Size(246, 33);
             Label_Money.TabIndex = 0;
-            Label_Money.Text = "Money: 0";
+            Label_Money.Text = "00:00    Money: 0";
+            Label_Money.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
+            AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(1920, 1080);
+            ClientSize = new Size(2880, 1620);
             Controls.Add(Label_Money);
-            Margin = new Padding(39, 18, 39, 18);
+            Margin = new Padding(58, 27, 58, 27);
             Name = "Form1";
             Load += Form1_Load;
             KeyDown += On_KeyDown;
-            AutoScaleDimensions = new SizeF(96.0F, 96.0F);
+            MouseMove += Form1_MouseMove;
             ResumeLayout(false);
             PerformLayout();
         }
